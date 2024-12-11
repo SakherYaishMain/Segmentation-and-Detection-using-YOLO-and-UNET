@@ -53,4 +53,74 @@ For the object detection model, bounding boxes are drawn around detected pets wi
 ```plain
 Testing Accuracy: 85.72%
 ```
+The bounding boxes are drawn around detected objects, showing their confidence and the correct identification of pet breeds.
 
+## 📊 Data
+
+The dataset used consists of the following columns:
+- **image**: The pet image.
+- **segmentation_mask**: The pixel-wise ground truth mask for segmentation.
+- **label**: The category label (breed of pet).
+- **species**: The species of the animal (dog or cat).
+
+The dataset is preprocessed by resizing images and segmentation masks, normalizing pixel values, and converting the segmentation masks to binary format for segmentation tasks.
+
+## 🤖 Technologies Used
+
+- **Python 3.x**: The primary programming language used for implementation.
+- **TensorFlow**: For building and training deep learning models.
+- **Keras**: For constructing U-Net and YOLO architectures.
+- **NumPy**: For numerical operations and data manipulation.
+- **Matplotlib**: For visualization of results and model predictions.
+- **OpenCV**: For image preprocessing and handling.
+- **scikit-learn**: For evaluation metrics (mean Average Precision).
+
+## 📈 Model Evaluation
+
+The models are evaluated using multiple metrics:
+
+- **mAP (mean Average Precision)**: Used for evaluating object detection performance at different IoU thresholds (e.g., 0.25, 0.5, 0.75).
+- **Dice Coefficient**: A metric used for evaluating the accuracy of pixel-wise segmentation.
+- **Accuracy**: The overall performance of both the YOLO and U-Net models.
+
+### Example mAP Scores:
+```plain
+mAP@0.25: 85.2% mAP@0.5: 79.1% mAP@0.75: 70.4% mAP@0.95: 65.6%
+```
+
+## ⚡ Model Results Visualization
+
+### Training and Validation Loss
+
+A plot is generated to visualize the loss curves for both training and validation sets.
+
+```python
+plt.figure(figsize=(12, 5))
+plt.subplot(1, 2, 1)
+plt.plot(history.history['loss'], label='Training Loss')
+plt.plot(history.history['val_loss'], label='Validation Loss')
+plt.xlabel('Epochs')
+plt.ylabel('Loss')
+plt.title('Training and Validation Loss')
+plt.legend()
+
+# Plot training & validation accuracy
+plt.subplot(1, 2, 2)
+plt.plot(history.history['dice_coefficient'], label='Training Accuracy')
+plt.plot(history.history['val_dice_coefficient'], label='Validation Accuracy')
+plt.xlabel('Epochs')
+plt.ylabel('Accuracy')
+plt.title('Training and Validation Accuracy')
+plt.legend()
+
+plt.show()
+```
+### Detection Bounding Boxes
+
+After inference, the detected objects (pets) are shown with bounding boxes, confidence scores, and class labels.
+
+## 🧑‍💻 Future Improvements
+
+- **Model Optimization**: Explore other architectures like **DeepLab** or **Mask R-CNN** for improved segmentation results.
+- **Data Augmentation**: Apply more robust data augmentation techniques to increase model generalization.
+- **Real-time Detection**: Integrate the models into a real-time application for detecting and segmenting pets in live video feeds.
