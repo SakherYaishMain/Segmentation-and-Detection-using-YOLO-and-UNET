@@ -43,7 +43,6 @@ The models are trained using the processed datasets for **10 epochs** with the f
 #### **Segmentation Output**
 For the segmentation model, an image with the predicted mask is compared with the ground truth mask:
 
-```plaintext
+```python
 Epoch 1/20
 168/168 ━━━━━━━━━━━━━━━━━━━━ 116s 461ms/step - dice_coefficient: 0.4604 - loss: 1.5286 - val_dice_coefficient: 0.5824 - val_loss: 1.0219
-...
