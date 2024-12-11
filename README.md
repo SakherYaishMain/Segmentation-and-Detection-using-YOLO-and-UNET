@@ -46,3 +46,11 @@ For the segmentation model, an image with the predicted mask is compared with th
 ```python
 Epoch 1/20
 168/168 ━━━━━━━━━━━━━━━━━━━━ 116s 461ms/step - dice_coefficient: 0.4604 - loss: 1.5286 - val_dice_coefficient: 0.5824 - val_loss: 1.0219
+```
+### Object Detection Output
+
+For the object detection model, bounding boxes are drawn around detected pets with the associated class labels and confidence scores:
+```plain
+Testing Accuracy: 85.72%
+```
+
